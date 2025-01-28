@@ -1,10 +1,12 @@
 package week_1;
-abstract class Animal{
+abstract public class Animal {
     private int age;
 
-    public Animal(int age){
+    //Constructor
+    public Animal(int age) {
         this.age = age;
     }
 
+    // behavior
     public abstract void eat();
 }

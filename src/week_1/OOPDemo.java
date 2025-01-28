@@ -1,14 +1,27 @@
 package week_1;
 
+
+// Demonstration
 public class OOPDemo {
     public static void main(String[] args) {
-       Pet ella = new Dog("Ella","Lab",7);
-        System.out.println(ella.getName());
+        Dog ella = new Dog("Ella", 3, "Labrador");
+        Cat kers = new Cat("Whiskers", 5);
 
-        Pet nili = new Cat("Nili",2);
+        ella.makeSound(); // Woof! Woof!
 
-        nili.makeSound();
-        ella.makeSound();
+        ella.eat(); // Whiskers is eating dog food
+        kers.eat(); // Whiskers is eating cat food
+
+        ella.eat("fish");
+
+
+
+        // Polymorphic references
+        Pet sky = new Dog("Sky", 2, "Golden Retriever");
+
+        sky.makeSound(); // Woof! Woof!
+        // sky.bark(); // Compile-time error
+        ((Dog)sky).bark(); // OK
     }
 }
 
