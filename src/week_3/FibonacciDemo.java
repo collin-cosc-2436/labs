@@ -38,7 +38,7 @@ public class FibonacciDemo {
             return store[n]; //return cached
         }
 
-        store[n] = memoizationFib(n - 1, store) + memoizationFib(n - 2, store);
+        store[n] = memoizationFib(n - 2, store) + memoizationFib(n - 1, store);
         return store[n];
     }
 
@@ -48,7 +48,6 @@ public class FibonacciDemo {
     call 1: fib(5) = fib(4) + fib(3)
     call 2: fib(4) = fib(3) + fib(2)
             fib(3) = fib(2) + fib(1)
-            fib(2) = fib(1) + fib(0)
             fib(2) = fib(1) + fib(0)
             fib(1) = 1
             fib(0) = 0
