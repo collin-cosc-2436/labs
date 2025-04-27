@@ -66,7 +66,7 @@ public class BinarySearchTree {
     private Node deleteRec(Node root, int key) {
 
         if (root == null) {
-            return root;
+            return null;
         }
 
         if(key < root.key) {
@@ -74,25 +74,33 @@ public class BinarySearchTree {
         } else if (key > root.key) {
             root.right = deleteRec(root.right, key);
         }else{
-            // Node either leaf or has one child.
-            if(root.left ==null){
-                return root.right;
-            }else if (root.right ==null){
-                return root.left;
+            // Case 1: Node has no children
+            if (root.left == null && root.right == null) {
+                return null; // Remove the node by returning null
             }
 
-            //Node with two children
+            // Case 2: Node with only one child
+            if (root.left == null) return root.right;
+            else if (root.right == null) return root.left;
 
-
-            //
-
-
+            // Case 3: Node with two children
+            root.key = minValue(root.right); // Find the in-order successor
+            root.right = deleteRec(root.right, root.key); // Delete the duplicate node
 
         }
 
-
-
         return root;
+    }
+
+
+    // Helper method to find minimum value in a subtree
+    private int minValue(Node root) {
+        int minVal = root.key;
+        while (root.left != null) {
+            minVal = root.left.key;
+            root = root.left;
+        }
+        return minVal;
     }
 
 }
